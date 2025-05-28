@@ -1,7 +1,7 @@
 About gstreamer-bundle-feedstock
 ========================
 
-Feedstock license: [MIT](https://github.com/open-world-agents/owa-env-gst-deps/blob/main/LICENSE)
+Feedstock license: [MIT](https://github.com/open-world-agents/gstreamer-bundle-feedstock/blob/main/LICENSE)
 
 Home: https://github.com/open-world-agents/open-world-agents
 
@@ -17,8 +17,8 @@ Current build status
 
 <table><tr><td>All platforms:</td>
     <td>
-      <a href="https://github.com/open-world-agents/owa-env-gst-deps/actions/workflows/conda-publish.yml">
-        <img src="https://github.com/open-world-agents/owa-env-gst-deps/actions/workflows/conda-publish.yml/badge.svg">
+      <a href="https://github.com/open-world-agents/gstreamer-bundle-feedstock/actions/workflows/conda-publish.yml">
+        <img src="https://github.com/open-world-agents/gstreamer-bundle-feedstock/actions/workflows/conda-publish.yml/badge.svg">
       </a>
     </td>
   </tr>
