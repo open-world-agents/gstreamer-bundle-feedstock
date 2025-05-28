@@ -22,6 +22,8 @@ jobs:
           auto-activate-base: false
           miniconda-version: "latest"
           mamba-version: "*"
+          channels: conda-forge
+          conda-remove-defaults: "true"
 
       - name: Install conda-build and anaconda-client
         shell: bash -l {0}
