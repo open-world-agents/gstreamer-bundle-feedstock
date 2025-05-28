@@ -1,6 +1,9 @@
+{% set version = "1.24.11" %}
+{% set gst_version = "1.24.11" %}
+
 package:
   name: owa-env-gst-deps
-  version: "1.0.0"
+  version: "{{ version }}"
 
 build:
   noarch: generic
@@ -9,13 +12,13 @@ build:
 requirements:
   run:
     - pygobject
-    - gst-python ==1.24.11
-    - gst-libav ==1.24.11
-    - gstreamer ==1.24.11
-    - gst-plugins-base ==1.24.11
-    - gst-plugins-good ==1.24.11
-    - gst-plugins-bad ==1.24.11
-    - gst-plugins-ugly ==1.24.11
+    - gst-python =={{ gst_version }}
+    - gst-libav =={{ gst_version }}
+    - gstreamer =={{ gst_version }}
+    - gst-plugins-base =={{ gst_version }}
+    - gst-plugins-good =={{ gst_version }}
+    - gst-plugins-bad =={{ gst_version }}
+    - gst-plugins-ugly =={{ gst_version }}
 
 about:
   home: https://github.com/open-world-agents/open-world-agents
