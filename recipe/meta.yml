@@ -1,0 +1,23 @@
+package:
+  name: owa-env-gst-deps
+  version: "1.0.0"
+
+build:
+  noarch: generic
+  number: 0
+
+requirements:
+  run:
+    - pygobject
+    - gst-python ==1.24.11
+    - gst-libav ==1.24.11
+    - gstreamer ==1.24.11
+    - gst-plugins-base ==1.24.11
+    - gst-plugins-good ==1.24.11
+    - gst-plugins-bad ==1.24.11
+    - gst-plugins-ugly ==1.24.11
+
+about:
+  home: https://github.com/open-world-agents/open-world-agents
+  license: MIT
+  summary: Meta-package with GStreamer-related dependencies for Open World Agents

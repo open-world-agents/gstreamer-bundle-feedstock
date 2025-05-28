@@ -1,0 +1,40 @@
+name: Build and Upload Conda Package
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'recipe/**'
+      - '.github/workflows/conda-publish.yml'
+
+jobs:
+  build-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Conda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: build
+          auto-activate-base: false
+          miniconda-version: "latest"
+          use-mamba: true
+
+      - name: Install conda-build and anaconda-client
+        shell: bash -l {0}
+        run: |
+          mamba install -y conda-build anaconda-client
+
+      - name: Build package
+        shell: bash -l {0}
+        run: |
+          conda build recipe --output-folder=output
+
+      - name: Upload to Anaconda.org
+        shell: bash -l {0}
+        run: |
+          anaconda login --token ${{ secrets.ANACONDA_API_TOKEN }}
+          anaconda upload output/**/owa-env-gst-deps-*.tar.bz2 --user open-world-agents --force
