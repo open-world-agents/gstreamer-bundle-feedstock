@@ -40,5 +40,5 @@ jobs:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_API_TOKEN }}
         shell: bash -l {0}
         run: |
-          anaconda upload output/noarch/owa-env-gst-deps-*.conda --user open-world-agents --force
+          anaconda upload output/noarch/*.conda --user open-world-agents --force
 
