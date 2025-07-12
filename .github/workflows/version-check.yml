@@ -1,0 +1,73 @@
+name: Check for GStreamer Updates
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  check-gstreamer-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests packaging
+
+      - name: Check for new GStreamer version on conda-forge
+        id: version-check
+        run: |
+          python .github/scripts/check_gstreamer_version.py
+          
+      - name: Create Pull Request
+        if: steps.version-check.outputs.new-version-available == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
+          title: "🚀 Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
+          body: |
+            ## GStreamer Version Update (conda-forge)
+
+            This PR updates GStreamer from version `${{ steps.version-check.outputs.current-version }}` to `${{ steps.version-check.outputs.new-version }}`.
+
+            ### Changes:
+            - Updated `gst_version` in `recipe/meta.yaml`
+            - Updated package `version` in `recipe/meta.yaml`
+
+            ### Release Information:
+            - **conda-forge Package**: ${{ steps.version-check.outputs.release-url }}
+
+            ### Package Availability Status:
+            ${{ steps.version-check.outputs.package-status }}
+
+            ### All Packages in Bundle:
+            - gst-python
+            - gst-libav
+            - gstreamer
+            - gst-plugins-base
+            - gst-plugins-good
+            - gst-plugins-bad
+            - gst-plugins-ugly
+
+            ---
+
+            🤖 This PR was automatically created by the conda-forge version check workflow.
+            Please review and test before merging.
+          branch: update-gstreamer-${{ steps.version-check.outputs.new-version }}
+          delete-branch: true
+          labels: |
+            enhancement
+            dependencies
+            automated-pr
