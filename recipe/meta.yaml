@@ -11,7 +11,7 @@ build:
 
 requirements:
   run:
-    - pygobject
+    - pygobject ==3.50.0
     - gst-python =={{ gst_version }}
     - gst-libav =={{ gst_version }}
     - gstreamer =={{ gst_version }}
@@ -19,6 +19,9 @@ requirements:
     - gst-plugins-good =={{ gst_version }}
     - gst-plugins-bad =={{ gst_version }}
     - gst-plugins-ugly =={{ gst_version }}
+    # Additional dependencies needed to be fixed to prevent error
+    - graphite2=1.3.14=he0c23c2_0  # [win64]
+    - gettext=0.21.1=h5728263_0 # [win64]
 
 about:
   home: https://github.com/open-world-agents/open-world-agents
