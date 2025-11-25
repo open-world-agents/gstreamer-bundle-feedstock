@@ -157,12 +157,12 @@ def get_package_status_summary(target_version):
     for package in gstreamer_packages:
         versions = get_package_versions(package)
         if target_version in versions:
-            status_lines.append(f"✅ {package}: {target_version}")
+            status_lines.append(f"- ✅ **{package}**: `{target_version}`")
         else:
             latest = versions[0] if versions else "unknown"
-            status_lines.append(f"❌ {package}: {target_version} (latest: {latest})")
+            status_lines.append(f"- ❌ **{package}**: `{target_version}` (latest: `{latest}`)")
 
-    return "\\n".join(status_lines)
+    return "\n".join(status_lines)
 
 
 def set_github_output(name, value):

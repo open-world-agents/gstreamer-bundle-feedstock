@@ -38,32 +38,40 @@ jobs:
           commit-message: "Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
           title: "🚀 Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
           body: |
-            ## GStreamer Version Update (conda-forge)
+            ## 📦 GStreamer Version Update
 
-            This PR updates GStreamer from version `${{ steps.version-check.outputs.current-version }}` to `${{ steps.version-check.outputs.new-version }}`.
+            This PR updates GStreamer from **`${{ steps.version-check.outputs.current-version }}`** to **`${{ steps.version-check.outputs.new-version }}`**.
 
-            ### Changes:
-            - Updated `gst_version` in `recipe/meta.yaml`
-            - Updated package `version` in `recipe/meta.yaml`
+            ### 📋 Changes
 
-            ### Release Information:
-            - **conda-forge Package**: ${{ steps.version-check.outputs.release-url }}
+            - Updated `gst_version` to `${{ steps.version-check.outputs.new-version }}` in `recipe/meta.yaml`
+            - Updated `version` to `${{ steps.version-check.outputs.new-version }}` in `recipe/meta.yaml`
 
-            ### Package Availability Status:
+            ### 🔗 Release Information
+
+            - **conda-forge Package**: [${{ steps.version-check.outputs.new-version }}](${{ steps.version-check.outputs.release-url }})
+
+            ### ✅ Package Availability Status
+
+            All required packages are available on conda-forge for version `${{ steps.version-check.outputs.new-version }}`:
+
             ${{ steps.version-check.outputs.package-status }}
 
-            ### All Packages in Bundle:
-            - gst-python
-            - gst-libav
-            - gstreamer
-            - gst-plugins-base
-            - gst-plugins-good
-            - gst-plugins-bad
-            - gst-plugins-ugly
+            ### 📦 Packages in Bundle
+
+            This bundle includes the following GStreamer packages:
+
+            - `gstreamer` - Core GStreamer library
+            - `gst-plugins-base` - Essential plugins
+            - `gst-plugins-good` - Good quality plugins
+            - `gst-plugins-bad` - Experimental plugins
+            - `gst-plugins-ugly` - Plugins with licensing issues
+            - `gst-libav` - FFmpeg-based plugins
+            - `gst-python` - Python bindings
 
             ---
 
-            🤖 This PR was automatically created by the conda-forge version check workflow.
+            🤖 **Automated PR** - This pull request was automatically created by the conda-forge version check workflow.
             Please review and test before merging.
           branch: update-gstreamer-${{ steps.version-check.outputs.new-version }}
           delete-branch: true
