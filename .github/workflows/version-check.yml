@@ -34,7 +34,7 @@ jobs:
         if: steps.version-check.outputs.new-version-available == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           commit-message: "Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
           title: "🚀 Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
           body: |
