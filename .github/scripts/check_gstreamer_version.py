@@ -169,7 +169,12 @@ def set_github_output(name, value):
     """Set GitHub Actions output variable"""
     if "GITHUB_OUTPUT" in os.environ:
         with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-            f.write(f"{name}={value}\n")
+            # For multiline values, use heredoc syntax
+            if "\n" in str(value):
+                delimiter = "EOF"
+                f.write(f"{name}<<{delimiter}\n{value}\n{delimiter}\n")
+            else:
+                f.write(f"{name}={value}\n")
     else:
         print(f"Would set output: {name}={value}")
 
