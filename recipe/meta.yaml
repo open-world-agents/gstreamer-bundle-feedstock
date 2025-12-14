@@ -11,7 +11,7 @@ build:
 
 requirements:
   run:
-    - pygobject ==3.50.0
+    - pygobject ==3.54.5
     - gst-python =={{ gst_version }}
     - gst-libav =={{ gst_version }}
     - gstreamer =={{ gst_version }}
@@ -20,7 +20,7 @@ requirements:
     - gst-plugins-bad =={{ gst_version }}
     - gst-plugins-ugly =={{ gst_version }}
     # Additional dependencies needed to be fixed to prevent error
-    - gettext=0.21.1
+    # - gettext=0.21.1 # maybe no matter..
     # - graphite2=1.3.14=he0c23c2_0  # Issue which graphite2 is calling ucrtbased.dll, which is debug dll, seems to be resolved as 2025-10-21
 
 about:
