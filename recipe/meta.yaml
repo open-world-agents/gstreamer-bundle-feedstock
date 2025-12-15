@@ -14,8 +14,9 @@ requirements:
     - pygobject =3.54.5
     - gst-python ={{ gst_version }}
     # Temporarily excluded gst-libav due to incompatible ffmpeg dependencies in GStreamer 1.26.9
-    # gst-libav requires ffmpeg 8.0.x which has libvpx <1.15 or libxml2 >=2.14
-    # while gst-plugins-good requires libvpx >=1.15.2 and gst-plugins-bad requires libxml2 <2.14
+    # gst-libav requires ffmpeg 8.0.x, but:
+    #   - ffmpeg 8.0.0 requires libvpx >=1.14.1,<1.15.0a0 (conflicts with gst-plugins-good needing >=1.15.2)
+    #   - ffmpeg 8.0.1 requires libxml2 >=2.14.6 (conflicts with gst-plugins-bad needing <2.14.0a0)
     # - gst-libav ={{ gst_version }}
     - gstreamer ={{ gst_version }}
     - gst-plugins-base ={{ gst_version }}
