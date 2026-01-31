@@ -35,9 +35,10 @@ jobs:
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.PAT }}
-          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           commit-message: "Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          signoff: false
           title: "🚀 Update GStreamer to version ${{ steps.version-check.outputs.new-version }}"
           body: |
             ## 📦 GStreamer Version Update
