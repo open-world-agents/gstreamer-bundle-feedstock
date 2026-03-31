@@ -7,11 +7,11 @@ package:
 
 build:
   noarch: generic
-  number: 0
+  number: 1
 
 requirements:
   run:
-    - pygobject =3.54.5
+    - pygobject =3.56.2
     - gst-python ={{ gst_version }}
     - gst-libav ={{ gst_version }}
     - gstreamer ={{ gst_version }}
