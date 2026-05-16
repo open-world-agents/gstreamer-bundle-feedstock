@@ -1,5 +1,5 @@
-{% set version = "1.28.1" %}
-{% set gst_version = "1.28.1" %}
+{% set version = "1.28.3" %}
+{% set gst_version = "1.28.3" %}
 
 package:
   name: gstreamer-bundle
